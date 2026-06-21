@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Audit Kata Sandi — Sistem Pakar Fuzzy Logic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="Pakar.css" />
+</head>
+<body>
+
+<div class="page">
+
+  <p class="eyebrow">Sistem Pakar · Fuzzy Logic (Mamdani)</p>
+  <h1>Audit Kata Sandi</h1>
+  <p class="subhead">
+    Ketik sebuah password di bawah. Sistem akan mem-fuzzifikasi panjang, variasi karakter,
+    dan tingkat predictability-nya secara real-time, lalu menalar tingkat keamanannya
+    melalui basis aturan pakar.
+  </p>
+
+  <div class="panel">
+    <p class="panel-label">Input</p>
+    <div class="input-row">
+      <input
+        type="password"
+        id="password-input"
+        placeholder="Ketik password di sini…"
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button id="toggle-visibility" type="button" aria-pressed="false">Tampilkan</button>
+    </div>
+  </div>
+
+  <div class="panel" id="result-panel">
+    <p class="panel-label">Skor Keamanan</p>
+    <div id="empty-state">Menunggu input password…</div>
+
+    <div class="result-body">
+      <div class="score-row">
+        <span id="score-value">0</span>
+        <span id="score-label">—</span>
+      </div>
+      <div class="score-bar-track">
+        <div id="score-bar-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <p class="panel-label">Pembacaan Fuzzifikasi (derajat keanggotaan tiap variabel)</p>
+    <div id="readout"></div>
+  </div>
+
+  <div class="panel">
+    <p class="panel-label">Rekomendasi</p>
+    <ul id="suggestions-list"></ul>
+  </div>
+
+  <p class="panel-label" style="margin-bottom:10px;">Alur Sistem</p>
+  <div class="pipeline">
+    <span class="pipeline-step"><b>1</b> Fuzzifikasi input</span>
+    <span class="pipeline-step"><b>2</b> Inferensi aturan (min–max)</span>
+    <span class="pipeline-step"><b>3</b> Defuzzifikasi (centroid)</span>
+  </div>
+
+  <footer>
+    Diproses sepenuhnya di browser Anda — password tidak dikirim ke mana pun.
+  </footer>
+
+</div>
+
+<script src="Pakar.js"></script>
+</body>
+</html>
